@@ -1,1 +1,8 @@
-# custom-assistant-summary-helper-
+{
+  "name": "eCornell Custom Summary Explanation with guides filtering,
+  "type": "helper",
+  "properties": {
+    "user_type": "all", 
+    "component": "all"
+  }
+}
