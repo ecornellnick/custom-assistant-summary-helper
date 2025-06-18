@@ -13,25 +13,13 @@ If no assignment is given, respond with Nothing to summarize.
 Do not provide code or the full solution. 
 Do not ask if there are any more questions.`
 
-  codioIDE.coachBot.register("eCornellErrorAugmentButton", "Give me a summary:", onButtonPress)
+  codioIDE.coachBot.register("eCornellSummaryButton", "Give me a summary:", onButtonPress)
 
   async function onButtonPress() {
     // Function that automatically collects all available context 
     // returns the following object: {guidesPage, assignmentData, files, error}
     let context = await codioIDE.coachBot.getContext()
     
-    // try {
-    //   input = await codioIDE.coachBot.input("Please paste the error message you want me to explain!")
-    // } catch (e) {
-      if (e.message == "Cancelled") {
-        //codioIDE.coachBot.write("Please feel free to have any other error messages explained!")
-        codioIDE.coachBot.showMenu()
-        return
-      }
-    //}
-    
-    // console.log(input)
-
     //Define your assistant's userPrompt - this is where you will provide all the context you collected along with the task you want the LLM to generate text for.
     const userPrompt = `
 Here is the description of the programming assignment the student is working on:
