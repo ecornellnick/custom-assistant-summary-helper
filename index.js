@@ -12,34 +12,28 @@ Note that you will respond without xml tags and only the task summary, starting 
 If no assignment is given, respond with Nothing to summarize. 
 Do not provide code or the full solution. 
 Do not ask if there are any more questions.`
-  
 
   codioIDE.coachBot.register("eCornellErrorAugmentButton", "Give me a summary:", onButtonPress)
 
   async function onButtonPress() {
     // Function that automatically collects all available context 
     // returns the following object: {guidesPage, assignmentData, files, error}
-
     let context = await codioIDE.coachBot.getContext()
-      // NOTES: The  following chunk is where the student will paste their error message for a response
-      try {
-        input = await codioIDE.coachBot.input("Please paste the error message you want me to explain!")
-      }  catch (e) {
-          if (e.message == "Cancelled") {
-            codioIDE.coachBot.write("Please feel free to have any other error messages explained!")
-            codioIDE.coachBot.showMenu()
-            return
-          }
+    
+    try {
+      input = await codioIDE.coachBot.input("Please paste the error message you want me to explain!")
+    } catch (e) {
+      if (e.message == "Cancelled") {
+        codioIDE.coachBot.write("Please feel free to have any other error messages explained!")
+        codioIDE.coachBot.showMenu()
+        return
       }
     }
     
     // console.log(input)
 
-    
-        //Define your assistant's userPrompt - this is where you will provide all the context you collected along with the task you want the LLM to generate text for.
-        const userPrompt = `
-
-
+    //Define your assistant's userPrompt - this is where you will provide all the context you collected along with the task you want the LLM to generate text for.
+    const userPrompt = `
 Here is the description of the programming assignment the student is working on:
 
 <assignment>
@@ -53,15 +47,12 @@ Note: Here is a list of items that are not part of the assignment instructions:
 
 If any of the above are present in the <assignment>, ignore them as if they're not provided to you
 
-Phrase your explanation directly addressing the student as 'you'. 
-
-`
+Phrase your explanation directly addressing the student as 'you'.`
 
     const result = await codioIDE.coachBot.ask({
-        systemPrompt: systemPrompt,
-        messages: [{"role": "user", "content": userPrompt}]
+      systemPrompt: systemPrompt,
+      messages: [{"role": "user", "content": userPrompt}]
     })
-       
   }
 
 })(window.codioIDE, window)
