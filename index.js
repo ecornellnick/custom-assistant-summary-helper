@@ -20,15 +20,15 @@ Do not ask if there are any more questions.`
     // returns the following object: {guidesPage, assignmentData, files, error}
     let context = await codioIDE.coachBot.getContext()
     
-    try {
-      input = await codioIDE.coachBot.input("Please paste the error message you want me to explain!")
-    } catch (e) {
-      if (e.message == "Cancelled") {
-        codioIDE.coachBot.write("Please feel free to have any other error messages explained!")
-        codioIDE.coachBot.showMenu()
-        return
-      }
-    }
+    // try {
+    //   input = await codioIDE.coachBot.input("Please paste the error message you want me to explain!")
+    // } catch (e) {
+    //   if (e.message == "Cancelled") {
+    //     codioIDE.coachBot.write("Please feel free to have any other error messages explained!")
+    //     codioIDE.coachBot.showMenu()
+    //     return
+    //   }
+    // }
     
     // console.log(input)
 
