@@ -13,7 +13,7 @@ If no assignment is given, respond with Nothing to summarize.
 Do not provide code or the full solution. 
 Do not ask if there are any more questions.`
 
-  codioIDE.coachBot.register("eCornellSummaryButton", "Give me a summary:", onButtonPress)
+  codioIDE.coachBot.register("eCornellSummaryButton", "Summarize what I need to do", onButtonPress)
 
   async function onButtonPress() {
     // Function that automatically collects all available context 
